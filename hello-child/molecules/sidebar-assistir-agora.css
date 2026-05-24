@@ -112,3 +112,34 @@
     text-decoration: none; /* Previne o aspeto de link padrão */
     text-align: center;
 }
+
+/* 5. Blindagem contra Especificidade e Poluição do Tema Pai */
+.sidebar-assistir-agora a.btn.btn--primary,
+.sidebar-assistir-agora .sidebar-assistir-agora__btn,
+.sidebar div.sidebar-assistir-agora a.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: var(--space-300) var(--space-500) !important;
+    background-color: var(--color-primary, #f56b15) !important;
+    color: #ffffff !important;
+    font-family: var(--font-heading, sans-serif) !important;
+    font-size: var(--text-sm-size, 1rem) !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    border-radius: var(--border-radius-200, 8px) !important;
+    border: none !important;
+    box-sizing: border-box !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Hover Blindado */
+.sidebar-assistir-agora a.btn.btn--primary:hover,
+.sidebar-assistir-agora .sidebar-assistir-agora__btn:hover,
+.sidebar div.sidebar-assistir-agora a.btn:hover {
+    background-color: var(--color-primary-hover, #d45209) !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    transform: translateY(-1px) !important;
+}
