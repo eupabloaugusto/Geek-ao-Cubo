@@ -79,14 +79,14 @@
 
 /* SVG do logo: altura fluida, largura automática */
 .header__logo-link svg {
-    height: var(--space-300);
+    height: var(--space-500);
     width: auto;
     display: block;
     transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header--scrolled .header__logo-link svg {
-    height: var(--space-300);
+    height: var(--space-500);
 }
 
 /* Fallback de texto caso o SVG não exista */
@@ -220,15 +220,6 @@
     /* No desktop não há hamburger, logo ocupa o fluxo natural */
     .header__container {
         padding: 0 var(--space-800);
-    }
-
-    /* Logo SVG maior no desktop */
-    .header__logo-link svg {
-        height: var(--space-500);
-    }
-
-    .header--scrolled .header__logo-link svg {
-        height: var(--space-500);
     }
 }
 
