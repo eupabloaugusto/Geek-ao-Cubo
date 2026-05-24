@@ -12,7 +12,8 @@
     font-size: var(--text-xs-size);
     text-decoration: none;
     transition: color 0.2s ease;
-    padding: 100% 0;
+    padding: var(--space-200) 0;
+    height: 100%;
     position: relative;
     outline: none;
 }

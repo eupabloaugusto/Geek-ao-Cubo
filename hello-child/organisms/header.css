@@ -17,7 +17,7 @@
     left: 0;
     right: 0;
     z-index: 950; /* Abaixo do drawer (1000) e do overlay (900) */
-    height: 80px;
+    height: 5rem;
     background-color: rgba(13, 14, 17, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -29,7 +29,7 @@
 
 /* Estado retrátil no scroll */
 .header--scrolled {
-    height: 64px;
+    height: 4rem;
     background-color: rgba(13, 14, 17, 0.96);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
@@ -43,7 +43,7 @@
     justify-content: space-between;
     height: 100%;
     width: 100%;
-    max-width: 1280px;
+    max-width: 80rem;
     margin: 0 auto;
     padding: 0 var(--space-500);
     gap: var(--space-500);
@@ -79,14 +79,14 @@
 
 /* SVG do logo: altura fluida, largura automática */
 .header__logo-link svg {
-    height: 28px;
+    height: var(--space-300);
     width: auto;
     display: block;
     transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header--scrolled .header__logo-link svg {
-    height: 22px;
+    height: var(--space-300);
 }
 
 /* Fallback de texto caso o SVG não exista */
@@ -153,7 +153,7 @@
 }
 
 .header__search .input-busca-compact {
-    height: 40px;
+    height: 2.5rem;
     font-size: var(--text-xs-size);
     font-weight: var(--font-weight-100);
 }
@@ -221,6 +221,15 @@
     .header__container {
         padding: 0 var(--space-800);
     }
+
+    /* Logo SVG maior no desktop */
+    .header__logo-link svg {
+        height: var(--space-500);
+    }
+
+    .header--scrolled .header__logo-link svg {
+        height: var(--space-500);
+    }
 }
 
 /* ============================
@@ -251,11 +260,11 @@
    ESPAÇADOR DE PÁGINA (Evita que o conteúdo fique debaixo do header fixo)
    ============================ */
 .header-spacer {
-    height: 80px;
+    height: 5rem;
     transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header--scrolled ~ .header-spacer,
 body.header-scrolled .header-spacer {
-    height: 64px;
+    height: 4rem;
 }
