@@ -2,6 +2,24 @@
  * Atom: Botão Primário CSS
  */
 
+/* Classe base para todos os botões */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-300) var(--space-500);
+    font-family: var(--font-body);
+    font-size: var(--text-sm-size);
+    font-weight: var(--font-weight-600);
+    text-decoration: none;
+    border-radius: var(--border-radius-200);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    outline: none;
+    line-height: 1.4;
+}
+
 .btn--primary {
     background-color: var(--color-primary);
     color: var(--neutral-100);

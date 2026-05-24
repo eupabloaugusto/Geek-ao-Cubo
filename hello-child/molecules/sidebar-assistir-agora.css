@@ -1,8 +1,5 @@
 /**
  * Molecule: Card Assistir Agora CSS (sidebar-assistir-agora)
- *
- * Estilização premium para a chamada lateral de streaming.
- * Garante contraste absoluto para acessibilidade e micro-interações de hover sofisticadas.
  */
 
 .sidebar-assistir-agora {
@@ -12,97 +9,67 @@
     overflow: hidden;
     border: 1px solid var(--color-border);
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.3s ease;
-
-    /* Fallback de fundo se não houver imagem promocional */
-    background: linear-gradient(135deg, var(--neutral-900) 0%, #1c0e06 100%);
-    background-color: var(--neutral-800);
-
-    /* Correção estrutural */
     display: flex;
     flex-direction: column;
     min-height: 320px;
     isolation: isolate;
+    background: var(--neutral-800);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover no Card */
 .sidebar-assistir-agora:hover {
     transform: translateY(-3px);
     border-color: rgba(245, 107, 21, 0.3);
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
 }
 
-/* Contêiner da Imagem de Fundo (Capa) */
-.sidebar-assistir-agora__bg-frame {
+/* 1. Correção Absoluta da Imagem de Fundo */
+.sidebar-assistir-agora__bg-frame,
+.sidebar-assistir-agora__bg,
+.sidebar-assistir-agora__bg-frame .imagem-capa-container,
+.sidebar-assistir-agora__bg-frame .imagem-capa {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover !important;
     z-index: 1;
-    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
-.sidebar-assistir-agora__bg,
-.sidebar-assistir-agora__bg .imagem-capa-container,
-.sidebar-assistir-agora__bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+.sidebar-assistir-agora__bg-frame .imagem-capa {
+    transition: transform 0.5s ease;
 }
 
-.sidebar-assistir-agora__bg .imagem-capa {
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Zoom suave da capa no hover */
-.sidebar-assistir-agora:hover .sidebar-assistir-agora__bg .imagem-capa {
+.sidebar-assistir-agora:hover .sidebar-assistir-agora__bg-frame .imagem-capa {
     transform: scale(1.08);
 }
 
-/* Película de Contraste e Gradiente Duplo (WCAG Compliance) */
+/* 2. Overlay de Contraste */
 .sidebar-assistir-agora__overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: 2;
-    background: linear-gradient(
-        to top,
-        rgba(13, 14, 17, 0.98) 0%,
-        rgba(13, 14, 17, 0.85) 45%,
-        rgba(13, 14, 17, 0.4) 100%
-    );
+    background: linear-gradient(to top, rgba(13, 14, 17, 0.98) 0%, rgba(13, 14, 17, 0.85) 45%, rgba(13, 14, 17, 0.4) 100%);
     transition: background 0.3s ease;
 }
 
-/* Escurece sutilmente no hover do card */
 .sidebar-assistir-agora:hover .sidebar-assistir-agora__overlay {
-    background: linear-gradient(
-        to top,
-        rgba(13, 14, 17, 1) 0%,
-        rgba(13, 14, 17, 0.9) 45%,
-        rgba(13, 14, 17, 0.45) 100%
-    );
+    background: linear-gradient(to top, rgba(13, 14, 17, 1) 0%, rgba(13, 14, 17, 0.9) 45%, rgba(13, 14, 17, 0.45) 100%);
 }
 
-/* Área de Conteúdo Relativa */
+/* 3. Conteúdo */
 .sidebar-assistir-agora__content {
     position: relative;
     z-index: 3;
     padding: var(--space-500) var(--space-400);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
     flex: 1;
     width: 100%;
 }
 
-/* Etiqueta Superior de Ação */
 .sidebar-assistir-agora__tag {
     font-family: var(--font-body);
     font-size: var(--text-xxs-size);
@@ -112,40 +79,36 @@
     letter-spacing: 0.08em;
     display: block;
     margin-bottom: var(--space-100);
-    user-select: none;
 }
 
-/* Nome da Plataforma */
 .sidebar-assistir-agora__platform {
     font-family: var(--font-heading);
     font-size: var(--text-sm-size);
     font-weight: var(--font-weight-700);
     color: var(--neutral-100);
     line-height: 1.2;
-    letter-spacing: -0.3px;
 }
 
-/* Descrição de Detalhe */
 .sidebar-assistir-agora__desc {
     font-family: var(--font-body);
     font-size: 0.875rem;
     color: var(--neutral-300);
     line-height: 1.5;
-    font-weight: var(--font-weight-400);
     margin-top: var(--space-200);
-    margin-bottom: auto;
+    margin-bottom: auto; /* Empurra o botão para o fundo */
 }
 
-/* Botão de Ação CTA */
+/* 4. Correção do Botão CTA */
 .sidebar-assistir-agora__action {
     width: 100%;
     margin-top: var(--space-400);
 }
 
-/* Força largura total no botão */
 .sidebar-assistir-agora__btn {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none; /* Previne o aspeto de link padrão */
+    text-align: center;
 }
