@@ -12,7 +12,7 @@
     font-size: var(--text-xs-size);
     text-decoration: none;
     transition: color 0.2s ease;
-    padding: var(--space-200) 0;
+    padding: 100% 0;
     position: relative;
     outline: none;
 }
