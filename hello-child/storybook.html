@@ -1567,6 +1567,56 @@
       }
     }
 
+    /* ===== MOLECULE: card-staff ===== */
+    .card-staff {
+      display: flex;
+      align-items: center;
+      padding: var(--space-200, 0.5rem);
+      background-color: var(--neutral-800, #1A1D22);
+      border-radius: var(--border-radius-200, 0.5rem);
+      gap: var(--space-300, 0.75rem);
+      border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+    }
+
+    .card-staff__avatar {
+      width: 3.5rem;
+      height: 3.5rem;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .card-staff__avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-staff__avatar-fallback {
+      width: 100%;
+      height: 100%;
+      background-color: var(--neutral-700, #374153);
+    }
+
+    .card-staff__info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-staff__name {
+      font-family: var(--font-heading, sans-serif);
+      font-size: var(--text-sm-size, 0.875rem);
+      font-weight: 700;
+      color: var(--neutral-100, #ffffff);
+    }
+
+    .card-staff__role {
+      font-family: var(--font-body, sans-serif);
+      font-size: var(--text-xxs-size, 0.75rem);
+      color: var(--color-primary, #F56B15);
+    }
+
     /* ===== MOLECULE: stat-bloco ===== */
     .stat-bloco {
       display: flex;
@@ -3585,6 +3635,57 @@ mm_render_component( 'molecules', 'card-personagem-dublador', array(
     'nome_dublador' => 'Natsuki Hanae',
     'idioma_dublagem' => 'Japonês (Seiyuu)',
     'img_dublador' => 'https://exemplo.com/hanae.jpg'
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Card Staff (card-staff) -->
+          <article class="sb-component" id="card-staff-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Card Staff (card-staff)</h3>
+                <p class="sb-component__desc">Card de membro da equipe técnica com foto circular, nome e cargo.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">molecules/card-staff.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="display: flex; flex-direction: column; gap: var(--space-300); width: 100%; max-width: 400px; margin: 0 auto;">
+              <div class="card-staff">
+                <div class="card-staff__avatar">
+                  <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=100&q=80" alt="Koyoharu Gotouge" loading="lazy">
+                </div>
+                <div class="card-staff__info">
+                  <span class="card-staff__role">Autor Original</span>
+                  <h4 class="card-staff__name">Koyoharu Gotouge</h4>
+                </div>
+              </div>
+              <div class="card-staff">
+                <div class="card-staff__avatar">
+                  <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=100&q=80" alt="Haruo Sotozaki" loading="lazy">
+                </div>
+                <div class="card-staff__info">
+                  <span class="card-staff__role">Diretor</span>
+                  <h4 class="card-staff__name">Haruo Sotozaki</h4>
+                </div>
+              </div>
+              <div class="card-staff">
+                <div class="card-staff__avatar">
+                  <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=100&q=80" alt="Yuki Kajiura" loading="lazy">
+                </div>
+                <div class="card-staff__info">
+                  <span class="card-staff__role">Compositor</span>
+                  <h4 class="card-staff__name">Yuki Kajiura</h4>
+                </div>
+              </div>
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php 
+mm_render_component( 'molecules', 'card-staff', array(
+    'nome'       => 'Koyoharu Gotouge',
+    'funcao'     => 'Autor Original',
+    'avatar_url' => 'https://exemplo.com/gotouge.jpg'
 ) );
 ?&gt;</pre>
             </div>

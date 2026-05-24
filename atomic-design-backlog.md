@@ -103,19 +103,17 @@
 
 ---
 
-### 🧬 Moléculas — Faltam 5 componentes
+### 🧬 Moléculas — Faltam 3 componentes
 
 #### 🔴 Prioridade ALTA
 
 | Componente | Descrição | Fonte |
 |---|---|---|
-| `card-personagem-dublador` | Card duplo: personagem (esq.) + voice actor (dir.) com seus nomes e roles | 🔵 |
 
 #### 🟡 Prioridade MÉDIA
 
 | Componente | Descrição | Fonte |
 |---|---|---|
-| `card-staff` | Card de membro da equipe: foto + nome + cargo (Diretor, Compositor, etc.) | 🔵 |
 | `card-recomendacao` | Card de anime recomendado: thumbnail + título + qtd de recomendações | 🔵 |
 | `relacionado-item` | Item de anime relacionado: thumbnail pequena + título + tipo de relação ("Sequência", "Prequel") | 🔵 |
 
@@ -160,9 +158,9 @@
 | Nível | Existem | Faltam | Total previsto |
 |---|---|---|---|
 | ⚛️ Átomos | 31 | 3 | 34 |
-| 🧬 Moléculas | 11 | 7 | 18 |
+| 🧬 Moléculas | 13 | 3 | 16 |
 | 🧫 Organismos | 12 | 8 | 20 |
-| **Total** | **54** | **18** | **72** |
+| **Total** | **56** | **14** | **70** |
 
 ---
 
