@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Molécula de card de personagem com avatar, nome e tipo (Principal/Secundário). Usado na página de detalhe do anime para exibir o elenco.
+Molécula de card de personagem com imagem quadrada e bloco de texto isolado abaixo. Usado na página de detalhe do anime para exibir o elenco. A imagem possui aspect-ratio 1:1 (quadrada) e o texto fica em bloco separado, sem sobreposição.
 
 ## Uso
 
@@ -10,8 +10,8 @@ Molécula de card de personagem com avatar, nome e tipo (Principal/Secundário).
 <?php
 mm_render_component( 'molecules', 'card-personagem', array(
     'name'      => 'Tanjiro Kamado',
-    'image_url' => 'https://exemplo.com/tanjiro.jpg',
-    'role'      => 'Principal'
+    'anime'     => 'Demon Slayer',
+    'image_url' => 'https://exemplo.com/tanjiro.jpg'
 ) );
 ?>
 ```
@@ -21,38 +21,42 @@ mm_render_component( 'molecules', 'card-personagem', array(
 | Parâmetro | Tipo | Padrão | Descrição |
 |-----------|------|--------|-----------|
 | `name` | string | `''` | Nome do personagem |
-| `image_url` | string | `''` | URL da imagem do avatar |
-| `role` | string | `''` | Tipo do personagem (Principal, Secundário, etc.) |
+| `anime` | string | `''` | Nome do anime a que pertence |
+| `image_url` | string | `''` | URL da imagem do personagem |
 | `class` | string | `''` | Classe CSS adicional |
 | `aria_label` | string | `'Personagem: {name}'` | Label de acessibilidade |
+| `social_links` | array | `[]` | Links de redes sociais (opcional) |
+
+## Estrutura HTML
+
+```html
+<article class="card-personagem">
+    <div class="card-personagem__banner">
+        <img src="..." alt="..." />
+    </div>
+    <div class="card-personagem__info">
+        <span class="card-personagem__anime-title">Nome do Anime</span>
+        <h3 class="card-personagem__name">Nome do Personagem</h3>
+    </div>
+</article>
+```
 
 ## Variáveis CSS
 
 O componente utiliza as seguintes variáveis de design tokens:
 
 - `--neutral-800` - Cor de fundo do card
-- `--neutral-700` - Cor de fundo do avatar placeholder
-- `--neutral-600` - Cor da borda em hover
 - `--neutral-100` - Cor do nome
-- `--neutral-400` - Cor do placeholder
-- `--color-primary` - Cor do tipo/role
+- `--color-primary` - Cor do título do anime
 - `--color-border` - Cor da borda
-- `--font-body` - Fonte do tipo/role
-- `--font-heading` - Fonte do nome e placeholder
-- `--text-sm-size` - Tamanho da fonte do nome
-- `--text-xs-size` - Tamanho da fonte do nome em mobile
-- `--text-xxs-size` - Tamanho da fonte do tipo/role
-- `--text-2xl-size` - Tamanho da fonte do placeholder
-- `--text-xl-size` - Tamanho da fonte do placeholder em mobile
-- `--text-sm-weight` - Peso da fonte do nome
-- `--text-2xl-weight` - Peso da fonte do placeholder
-- `--font-weight-700` - Peso da fonte do tipo/role
-- `--space-300` - Espaçamento entre elementos
-- `--space-200` - Espaçamento em mobile
-- `--space-500` - Padding do card
-- `--space-400` - Padding em mobile
+- `--font-body` - Fonte do título do anime
+- `--font-heading` - Fonte do nome
+- `--text-sm-size` - Tamanho da fonte do nome (compactado para mobile)
+- `--text-xxs-size` - Tamanho da fonte do título do anime
+- `--font-weight-700` - Peso da fonte do título do anime e nome
+- `--space-300` - Padding do bloco de texto (compactado para mobile)
+- `--space-050` - Gap entre elementos do bloco de texto
 - `--border-radius-300` - Raio da borda do card
-- `--border-radius-200` - Raio da borda do avatar
 
 ## SEO
 
@@ -63,29 +67,16 @@ O componente utiliza as seguintes variáveis de design tokens:
 ## Acessibilidade
 
 - Suporta navegação por teclado
-- Estado de hover com feedback visual
 - `aria-label` apropriado para leitores de tela
 - Imagem com `loading="lazy"` para performance
-- Fallback de avatar com inicial do nome
+- Estrutura semântica com tag `<article>`
 
 ## Responsividade
 
 O componente é responsivo e se ajusta automaticamente:
 
-- **Desktop/Tablet (≥ 768px):** Avatar 80px, padding completo
-- **Mobile (< 768px):** Avatar 64px, padding reduzido, fontes menores
-
-## Estados
-
-- **Normal:** Borda padrão, sem elevação
-- **Hover:** Elevação sutil, borda mais clara, sombra
-
-## Fallback
-
-Se não houver imagem, o componente exibe:
-- Fundo gradiente neutro
-- Inicial do nome em grande
-- Mantém a estrutura do card
+- **Desktop/Tablet:** Imagem quadrada 1:1, padding completo
+- **Mobile:** Tipografia compactada com `--text-sm-size` e `--space-300`
 
 ## Exemplo de Uso
 
@@ -94,25 +85,8 @@ Se não houver imagem, o componente exibe:
 <?php 
 mm_render_component( 'molecules', 'card-personagem', array(
     'name'      => 'Tanjiro Kamado',
-    'image_url' => 'https://exemplo.com/tanjiro.jpg',
-    'role'      => 'Principal'
-) );
-?>
-
-<!-- Card sem imagem (fallback) -->
-<?php 
-mm_render_component( 'molecules', 'card-personagem', array(
-    'name' => 'Nezuko Kamado',
-    'role' => 'Principal'
-) );
-?>
-
-<!-- Card secundário -->
-<?php 
-mm_render_component( 'molecules', 'card-personagem', array(
-    'name'      => 'Zenitsu Agatsuma',
-    'image_url' => 'https://exemplo.com/zenitsu.jpg',
-    'role'      => 'Secundário'
+    'anime'     => 'Demon Slayer',
+    'image_url' => 'https://exemplo.com/tanjiro.jpg'
 ) );
 ?>
 ```

@@ -9,6 +9,14 @@
 ## Descrição
 O botão primário é o principal componente de Call-to-Action (CTA) do blog. Ele é utilizado para ações de alta relevância, como redirecionar o usuário para ver mais episódios ou links externos patrocinados.
 
+## Estrutura HTML
+
+O botão primário **DEVE** utilizar a classe base estrutural `.btn` combinada com a modificadora `.btn--primary`:
+
+```html
+<a class="btn btn--primary" href="...">Texto do botão</a>
+```
+
 ## Variáveis CSS utilizadas
 - `--color-primary` (para o background padrão)
 - `--brand-600` (para o estado de hover)
