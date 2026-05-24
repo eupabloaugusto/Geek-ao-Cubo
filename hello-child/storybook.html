@@ -1468,6 +1468,105 @@
       gap: var(--space-200);
     }
 
+    /* ===== MOLECULE: card-character-voice ===== */
+    .card-character-voice {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      background-color: var(--neutral-800, #1A1D22);
+      border: 1px solid var(--neutral-700, #374153);
+      border-radius: var(--border-radius-300, 0.75rem);
+      overflow: hidden;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .card-character-voice:hover {
+      border-color: var(--brand-500, #F56B15);
+      transform: translateY(-0.125rem);
+    }
+
+    .card-character-voice__side {
+      display: flex;
+      align-items: center;
+      width: 50%;
+      gap: var(--space-300, 0.75rem);
+    }
+
+    .card-character-voice__side--character {
+      justify-content: flex-start;
+      text-align: left;
+      padding-right: var(--space-200, 0.5rem);
+    }
+
+    .card-character-voice__side--voice-actor {
+      justify-content: flex-end;
+      text-align: right;
+      padding-left: var(--space-200, 0.5rem);
+    }
+
+    .card-character-voice__avatar {
+      width: 4rem;
+      height: 4rem;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .card-character-voice__avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card-character-voice:hover .card-character-voice__avatar img {
+      transform: scale(1.06);
+    }
+
+    .card-character-voice__avatar-fallback {
+      width: 100%;
+      height: 100%;
+      background-color: var(--neutral-700, #374153);
+    }
+
+    .card-character-voice__meta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      padding: var(--space-200, 0.5rem) 0;
+    }
+
+    .card-character-voice__label {
+      font-family: var(--font-body, sans-serif);
+      font-size: var(--text-xxs-size, 0.75rem);
+      font-weight: 400;
+      color: var(--neutral-400, #9CA3AF);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      margin-bottom: var(--space-050, 0.125rem);
+    }
+
+    .card-character-voice__name {
+      font-family: var(--font-heading, sans-serif);
+      font-size: var(--text-sm-size, 1.25rem);
+      font-weight: 700;
+      color: var(--neutral-100, #ffffff);
+      line-height: 1.2;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 30rem) {
+      .card-character-voice__name {
+        font-size: 0.875rem;
+      }
+    }
+
     /* ===== MOLECULE: stat-bloco ===== */
     .stat-bloco {
       display: flex;
@@ -3419,6 +3518,73 @@ mm_render_component( 'molecules', 'card-personagem', array(
     'name'      => 'Tanjiro Kamado',
     'anime'     => 'Demon Slayer',
     'image_url' => 'https://exemplo.com/tanjiro.jpg'
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Card Personagem Dublador (card-personagem-dublador) -->
+          <article class="sb-component" id="card-personagem-dublador-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Card Personagem Dublador (card-personagem-dublador)</h3>
+                <p class="sb-component__desc">Card espelhado apresentando personagem e dublador com avatares 1:1 e layout simétrico.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">molecules/card-personagem-dublador.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="display: flex; flex-direction: column; gap: var(--space-400); width: 100%; max-width: 600px; margin: 0 auto;">
+              <div class="card-character-voice">
+                <div class="card-character-voice__side card-character-voice__side--character">
+                  <div class="card-character-voice__avatar">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=100&q=80" alt="Tanjiro Kamado" loading="lazy">
+                  </div>
+                  <div class="card-character-voice__meta">
+                    <span class="card-character-voice__label">Principal</span>
+                    <h4 class="card-character-voice__name">Tanjiro Kamado</h4>
+                  </div>
+                </div>
+                <div class="card-character-voice__side card-character-voice__side--voice-actor">
+                  <div class="card-character-voice__meta">
+                    <span class="card-character-voice__label">Japonês (Seiyuu)</span>
+                    <h4 class="card-character-voice__name">Natsuki Hanae</h4>
+                  </div>
+                  <div class="card-character-voice__avatar">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=100&q=80" alt="Natsuki Hanae" loading="lazy">
+                  </div>
+                </div>
+              </div>
+              <div class="card-character-voice">
+                <div class="card-character-voice__side card-character-voice__side--character">
+                  <div class="card-character-voice__avatar">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=100&q=80" alt="Nezuko Kamado" loading="lazy">
+                  </div>
+                  <div class="card-character-voice__meta">
+                    <span class="card-character-voice__label">Principal</span>
+                    <h4 class="card-character-voice__name">Nezuko Kamado</h4>
+                  </div>
+                </div>
+                <div class="card-character-voice__side card-character-voice__side--voice-actor">
+                  <div class="card-character-voice__meta">
+                    <span class="card-character-voice__label">Japonês (Seiyuu)</span>
+                    <h4 class="card-character-voice__name">Akari Kitō</h4>
+                  </div>
+                  <div class="card-character-voice__avatar">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=100&q=80" alt="Akari Kitō" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php 
+mm_render_component( 'molecules', 'card-personagem-dublador', array(
+    'nome_personagem' => 'Tanjiro Kamado',
+    'tipo_personagem' => 'Principal',
+    'img_personagem' => 'https://exemplo.com/tanjiro.jpg',
+    'nome_dublador' => 'Natsuki Hanae',
+    'idioma_dublagem' => 'Japonês (Seiyuu)',
+    'img_dublador' => 'https://exemplo.com/hanae.jpg'
 ) );
 ?&gt;</pre>
             </div>
