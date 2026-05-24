@@ -1410,63 +1410,37 @@
 
     /* ===== MOLECULE: card-personagem ===== */
     .card-personagem {
-      position: relative;
+      display: flex;
+      flex-direction: column;
       width: 100%;
-      aspect-ratio: 1 / 1;
+      height: 100%;
+      background-color: var(--neutral-800);
       border-radius: var(--border-radius-300);
       overflow: hidden;
       border: 1px solid var(--color-border);
-      background-color: var(--neutral-900);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      isolation: isolate;
-      cursor: pointer;
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-                  border-color 0.3s ease, 
-                  box-shadow 0.3s ease;
     }
 
-    .card-personagem:hover {
-      transform: translateY(-0.25rem);
-      border-color: var(--color-primary);
-      box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.5);
+    .card-personagem__banner {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
-    .card-personagem__bg,
-    .card-personagem__bg img {
-      position: absolute;
-      inset: 0;
+    .card-personagem__banner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 1;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .card-personagem:hover .card-personagem__bg img {
-      transform: scale(1.05);
-    }
-
-    .card-personagem__overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background: linear-gradient(
-        to top,
-        rgba(13, 14, 17, 0.95) 0%,
-        rgba(13, 14, 17, 0.6) 40%,
-        rgba(13, 14, 17, 0) 100%
-      );
-      transition: opacity 0.3s ease;
-    }
-
-    .card-personagem__content {
+    .card-personagem__info {
       position: relative;
-      z-index: 3;
       padding: var(--space-400);
-      width: 100%;
-      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: var(--space-100);
     }
 
     .card-personagem__anime-title {
@@ -1477,7 +1451,6 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       display: block;
-      margin-bottom: var(--space-100);
     }
 
     .card-personagem__name {
@@ -3413,7 +3386,7 @@ mm_render_component('atoms', 'meta-autor', [
             <header class="sb-component__header">
               <div class="sb-component__header-info">
                 <h3 class="sb-component__name">Card de Personagem (card-personagem)</h3>
-                <p class="sb-component__desc">Card de personagem estilo ficha colecionável premium com imagem sangrada e overlay gradiente.</p>
+                <p class="sb-component__desc">Card de personagem com separação física entre imagem e texto. Imagem em banner quadrado, texto em bloco isolado abaixo.</p>
               </div>
               <div class="sb-component__meta">
                 <code class="sb-component__file">molecules/card-personagem.php</code>
@@ -3421,21 +3394,19 @@ mm_render_component('atoms', 'meta-autor', [
             </header>
             <div class="sb-component__preview" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-400); width: 100%; max-width: 600px; margin: 0 auto;">
               <div class="card-personagem" aria-label="Personagem: Tanjiro Kamado">
-                <div class="card-personagem__bg">
+                <div class="card-personagem__banner">
                   <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=300&q=80" alt="Tanjiro Kamado" loading="lazy" />
                 </div>
-                <div class="card-personagem__overlay"></div>
-                <div class="card-personagem__content">
+                <div class="card-personagem__info">
                   <span class="card-personagem__anime-title">Demon Slayer</span>
                   <h3 class="card-personagem__name">Tanjiro Kamado</h3>
                 </div>
               </div>
               <div class="card-personagem" aria-label="Personagem: Nezuko Kamado">
-                <div class="card-personagem__bg">
+                <div class="card-personagem__banner">
                   <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&q=80" alt="Nezuko Kamado" loading="lazy" />
                 </div>
-                <div class="card-personagem__overlay"></div>
-                <div class="card-personagem__content">
+                <div class="card-personagem__info">
                   <span class="card-personagem__anime-title">Demon Slayer</span>
                   <h3 class="card-personagem__name">Nezuko Kamado</h3>
                 </div>

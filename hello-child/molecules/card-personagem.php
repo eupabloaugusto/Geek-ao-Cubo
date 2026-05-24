@@ -18,16 +18,13 @@ $class            = isset( $args['class'] ) ? esc_attr( $args['class'] ) : '';
 $redes            = isset( $args['social_links'] ) ? $args['social_links'] : array();
 $aria_label       = isset( $args['aria_label'] ) ? esc_attr( $args['aria_label'] ) : sprintf( __( 'Personagem: %s', 'hello-elementor-child' ), $nome_personagem );
 ?>
-<div class="card-personagem <?php echo $class; ?>" aria-label="<?php echo $aria_label; ?>">
-    <div class="card-personagem__bg">
+<article class="card-personagem <?php echo $class; ?>" aria-label="<?php echo $aria_label; ?>">
+    <div class="card-personagem__banner">
         <?php if ( ! empty( $image_url ) ) : ?>
             <img src="<?php echo $image_url; ?>" alt="<?php echo esc_attr( $nome_personagem ); ?>" loading="lazy" />
         <?php endif; ?>
     </div>
-    
-    <div class="card-personagem__overlay"></div>
-    
-    <div class="card-personagem__content">
+    <div class="card-personagem__info">
         <span class="card-personagem__anime-title"><?php echo $anime_pertencente; ?></span>
         <h3 class="card-personagem__name"><?php echo $nome_personagem; ?></h3>
         
@@ -37,4 +34,4 @@ $aria_label       = isset( $args['aria_label'] ) ? esc_attr( $args['aria_label']
             </div>
         <?php endif; ?>
     </div>
-</div>
+</article>

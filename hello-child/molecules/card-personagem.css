@@ -1,74 +1,43 @@
 /**
  * Molecule: Card de Personagem CSS (card-personagem)
  *
- * Estilo ficha colecionável premium com imagem sangrada e overlay.
+ * Estilo com separação física entre imagem e texto.
  */
 
 .card-personagem {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    aspect-ratio: 1 / 1;
+    height: 100%;
+    background-color: var(--neutral-800);
     border-radius: var(--border-radius-300);
     overflow: hidden;
     border: 1px solid var(--color-border);
-    background-color: var(--neutral-900);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    isolation: isolate;
-    cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-                border-color 0.3s ease, 
-                box-shadow 0.3s ease;
 }
 
-/* Micro-interações de Hover */
-.card-personagem:hover {
-    transform: translateY(-0.25rem);
-    border-color: var(--color-primary);
-    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.5);
+.card-personagem__banner {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
-/* Tratamento de Imagem Sangrada */
-.card-personagem__bg,
-.card-personagem__bg img {
-    position: absolute;
-    inset: 0;
+.card-personagem__banner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 1;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card-personagem:hover .card-personagem__bg img {
-    transform: scale(1.05);
-}
-
-/* Película Cinema de Contraste (Cine-gradient) */
-.card-personagem__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: linear-gradient(
-        to top,
-        rgba(13, 14, 17, 0.95) 0%,
-        rgba(13, 14, 17, 0.6) 40%,
-        rgba(13, 14, 17, 0) 100%
-    );
-    transition: opacity 0.3s ease;
-}
-
-/* Conteúdo Posicionado na Base */
-.card-personagem__content {
+.card-personagem__info {
     position: relative;
-    z-index: 3;
     padding: var(--space-400);
-    width: 100%;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: var(--space-100);
 }
 
-/* Nome do Anime (Subtítulo Acoplado) */
 .card-personagem__anime-title {
     font-family: var(--font-body);
     font-size: var(--text-xxs-size);
@@ -77,10 +46,8 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: block;
-    margin-bottom: var(--space-100);
 }
 
-/* Nome do Personagem */
 .card-personagem__name {
     font-family: var(--font-heading);
     font-size: var(--text-md-size);
@@ -90,7 +57,6 @@
     margin: 0;
 }
 
-/* Ações Discretas */
 .card-personagem__actions {
     margin-top: var(--space-200);
     display: flex;
