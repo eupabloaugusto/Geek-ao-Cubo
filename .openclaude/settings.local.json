@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs grep:*)",
+      "Bash(find . -name *.md -type f)",
+      "Bash(hello-child/docs/changelog.md:*)"
+    ]
+  }
+}
