@@ -1410,97 +1410,89 @@
 
     /* ===== MOLECULE: card-personagem ===== */
     .card-personagem {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: var(--border-radius-300);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background-color: var(--neutral-900);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: var(--space-300);
-      background-color: var(--neutral-800);
-      border: 1px solid var(--color-border);
-      border-radius: var(--border-radius-300);
-      padding: var(--space-500);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      justify-content: flex-end;
+      isolation: isolate;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  border-color 0.3s ease, 
+                  box-shadow 0.3s ease;
     }
 
     .card-personagem:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      border-color: var(--neutral-600);
+      transform: translateY(-0.25rem);
+      border-color: var(--color-primary);
+      box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.5);
     }
 
-    .card-personagem__avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: var(--border-radius-200);
-      overflow: hidden;
-      background-color: var(--neutral-700);
-      flex-shrink: 0;
-    }
-
-    .card-personagem__image {
+    .card-personagem__bg,
+    .card-personagem__bg img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      z-index: 1;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .card-personagem__avatar--placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--neutral-700) 0%, var(--neutral-800) 100%);
+    .card-personagem:hover .card-personagem__bg img {
+      transform: scale(1.05);
     }
 
-    .card-personagem__placeholder {
-      font-family: var(--font-heading);
-      font-size: var(--text-2xl-size);
-      font-weight: var(--text-2xl-weight);
-      color: var(--neutral-400);
+    .card-personagem__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(
+        to top,
+        rgba(13, 14, 17, 0.95) 0%,
+        rgba(13, 14, 17, 0.6) 40%,
+        rgba(13, 14, 17, 0) 100%
+      );
+      transition: opacity 0.3s ease;
     }
 
-    .card-personagem__info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-100);
-      text-align: center;
+    .card-personagem__content {
+      position: relative;
+      z-index: 3;
+      padding: var(--space-400);
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .card-personagem__role {
+    .card-personagem__anime-title {
       font-family: var(--font-body);
       font-size: var(--text-xxs-size);
-      font-weight: var(--font-weight-700);
+      font-weight: 700;
       color: var(--color-primary);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 1;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: var(--space-100);
     }
 
     .card-personagem__name {
       font-family: var(--font-heading);
-      font-size: var(--text-sm-size);
-      font-weight: var(--text-sm-weight);
+      font-size: var(--text-md-size);
+      font-weight: 700;
       color: var(--neutral-100);
       line-height: 1.2;
       margin: 0;
     }
 
-    @media (max-width: 768px) {
-      .card-personagem {
-        padding: var(--space-400);
-        gap: var(--space-200);
-      }
-
-      .card-personagem__avatar {
-        width: 64px;
-        height: 64px;
-      }
-
-      .card-personagem__placeholder {
-        font-size: var(--text-xl-size);
-      }
-
-      .card-personagem__name {
-        font-size: var(--text-xs-size);
-      }
+    .card-personagem__actions {
+      margin-top: var(--space-200);
+      display: flex;
+      gap: var(--space-200);
     }
 
     /* ===== MOLECULE: stat-bloco ===== */
@@ -3421,7 +3413,7 @@ mm_render_component('atoms', 'meta-autor', [
             <header class="sb-component__header">
               <div class="sb-component__header-info">
                 <h3 class="sb-component__name">Card de Personagem (card-personagem)</h3>
-                <p class="sb-component__desc">Card de personagem com avatar, nome e tipo (Principal/Secundário). Com suporte a fallback de avatar sem imagem.</p>
+                <p class="sb-component__desc">Card de personagem estilo ficha colecionável premium com imagem sangrada e overlay gradiente.</p>
               </div>
               <div class="sb-component__meta">
                 <code class="sb-component__file">molecules/card-personagem.php</code>
@@ -3429,20 +3421,22 @@ mm_render_component('atoms', 'meta-autor', [
             </header>
             <div class="sb-component__preview" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-400); width: 100%; max-width: 600px; margin: 0 auto;">
               <div class="card-personagem" aria-label="Personagem: Tanjiro Kamado">
-                <div class="card-personagem__avatar">
-                  <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=100&q=80" alt="Tanjiro Kamado" class="card-personagem__image" loading="lazy" />
+                <div class="card-personagem__bg">
+                  <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=300&q=80" alt="Tanjiro Kamado" loading="lazy" />
                 </div>
-                <div class="card-personagem__info">
-                  <span class="card-personagem__role">Principal</span>
+                <div class="card-personagem__overlay"></div>
+                <div class="card-personagem__content">
+                  <span class="card-personagem__anime-title">Demon Slayer</span>
                   <h3 class="card-personagem__name">Tanjiro Kamado</h3>
                 </div>
               </div>
               <div class="card-personagem" aria-label="Personagem: Nezuko Kamado">
-                <div class="card-personagem__avatar card-personagem__avatar--placeholder">
-                  <span class="card-personagem__placeholder">N</span>
+                <div class="card-personagem__bg">
+                  <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=300&q=80" alt="Nezuko Kamado" loading="lazy" />
                 </div>
-                <div class="card-personagem__info">
-                  <span class="card-personagem__role">Principal</span>
+                <div class="card-personagem__overlay"></div>
+                <div class="card-personagem__content">
+                  <span class="card-personagem__anime-title">Demon Slayer</span>
                   <h3 class="card-personagem__name">Nezuko Kamado</h3>
                 </div>
               </div>
@@ -3452,14 +3446,8 @@ mm_render_component('atoms', 'meta-autor', [
 // Card com imagem
 mm_render_component( 'molecules', 'card-personagem', array(
     'name'      => 'Tanjiro Kamado',
-    'image_url' => 'https://exemplo.com/tanjiro.jpg',
-    'role'      => 'Principal'
-) );
-
-// Card sem imagem (fallback)
-mm_render_component( 'molecules', 'card-personagem', array(
-    'name' => 'Nezuko Kamado',
-    'role' => 'Principal'
+    'anime'     => 'Demon Slayer',
+    'image_url' => 'https://exemplo.com/tanjiro.jpg'
 ) );
 ?&gt;</pre>
             </div>
