@@ -1,0 +1,109 @@
+/**
+ * Molecule: Card Personagem Dublador CSS (card-personagem-dublador)
+ *
+ * Apresenta o personagem e o dublador de forma espelhada e simétrica.
+ */
+
+.card-character-voice {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--neutral-800, #1A1D22);
+    border: 1px solid var(--neutral-700, #374153);
+    border-radius: var(--border-radius-300, 0.75rem);
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.card-character-voice:hover {
+    border-color: var(--brand-500, #F56B15);
+    transform: translateY(-0.125rem);
+}
+
+/* Configuração das Metades Espelhadas */
+.card-character-voice__side {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    gap: var(--space-300, 0.75rem);
+}
+
+.card-character-voice__side--character {
+    justify-content: flex-start;
+    text-align: left;
+    padding-right: var(--space-200, 0.5rem);
+}
+
+.card-character-voice__side--voice-actor {
+    justify-content: flex-end;
+    text-align: right;
+    padding-left: var(--space-200, 0.5rem);
+}
+
+/* Avatares 1:1 Clicados nas Bordas Externas */
+.card-character-voice__avatar {
+    width: 4rem;
+    height: 4rem;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card-character-voice__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card-character-voice:hover .card-character-voice__avatar img {
+    transform: scale(1.06);
+}
+
+.card-character-voice__avatar-fallback {
+    width: 100%;
+    height: 100%;
+    background-color: var(--neutral-700, #374153);
+}
+
+/* Blocos de Texto Internos */
+.card-character-voice__meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    padding: var(--space-200, 0.5rem) 0;
+}
+
+/* Labels Discretas (ex: Principal / Japonês) */
+.card-character-voice__label {
+    font-family: var(--font-body, sans-serif);
+    font-size: var(--text-xxs-size, 0.75rem);
+    font-weight: 400;
+    color: var(--neutral-400, #9CA3AF);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: var(--space-050, 0.125rem);
+}
+
+/* Nomes do Personagem e Dublador compactados */
+.card-character-voice__name {
+    font-family: var(--font-heading, sans-serif);
+    font-size: var(--text-sm-size, 1.25rem);
+    font-weight: 700;
+    color: var(--neutral-100, #ffffff);
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Ajuste Mobile para empilhar em telas muito pequenas, se necessário */
+@media (max-width: 30rem) {
+    .card-character-voice__name {
+        font-size: 0.875rem;
+    }
+}
